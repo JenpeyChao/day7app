@@ -1,1 +1,10 @@
-<p>music works!</p>
+<div style="text-align: center;">
+    <h1>Music Finder</h1>
+    <input type="text" placeholder="Search a Song" [(ngModel)]="song" (keydown.enter) = "findMusic()" id="areaInput" class="input"/>
+
+    <p>{{musicQueue[0].data[0].title}}</p>
+    <audio controls="controls">
+        <source src="{{musicQueue[0].data[0].preview}}"type="audio/mpeg">
+      </audio>
+    <pre>{{musicQueue[0].data[0] | json}}</pre>
+</div>
