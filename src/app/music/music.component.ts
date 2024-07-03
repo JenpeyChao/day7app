@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MusicService } from '../music.service';
 
-import { response } from 'express';
+
 
 @Component({
   selector: 'app-music',
@@ -9,20 +9,27 @@ import { response } from 'express';
   styleUrl: './music.component.css'
 })
 export class MusicComponent {
-  musicQueue:any = []
-  song: string = '';
-  constructor(private MusicService:MusicService){
-    console.log(this.musicQueue)
-  }
+  musicQueue:any = [];
+  song = '';
+  currentlyPlaying:any
+  constructor(private MusicService:MusicService){} 
 
- 
+  playNext(){
+    this.musicQueue.splice(0,1);
+
+
+  }
 
   findMusic(){
     console.log(this.song)
+    console.log(this.musicQueue.length);
     this.MusicService.searchSong(this.song).subscribe(
       response =>{
         this.musicQueue.push(response);
+        this.song = '';
+
       }
-    )
+    );
+
   }
 }

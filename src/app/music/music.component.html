@@ -1,10 +1,34 @@
 <div style="text-align: center;">
-    <h1>Music Finder</h1>
+    <h1>Music Playlist</h1>
     <input type="text" placeholder="Search a Song" [(ngModel)]="song" (keydown.enter) = "findMusic()" id="areaInput" class="input"/>
+    
+    <ng-container *ngIf = 'musicQueue.length > 0'>
+        <div>
+            <img src="{{musicQueue[0].data[1].album.cover_small}}">
+            <p> {{musicQueue[0].data[0].title}} By:{{musicQueue[0].data[0].artist.name}}</p>
+        </div>
+        
+        <div class="audio-player-container">
+            <audio  player controls autoplay src="{{musicQueue[0].data[0].preview}}" (ended) = "playNext()"></audio>
+            <button class="button" (click)="playNext()">⏭</button>
+        </div>
+        
+        <p style="font-size: 24px;">Playing Next</p>
+        <ul *ngFor = "let song of musicQueue; let i = index">
+            <ng-container *ngIf = "i>0">
+                <div class="row d-flex flex-row align-items-center">
+                    <img src="{{song.data[1].album.cover}}" > 
+                    <p style="font-size: 24px;">{{i+1}}) {{song.data[0].title}}</p> 
+                </div>
 
-    <p>{{musicQueue[0].data[0].title}}</p>
-    <audio controls="controls">
-        <source src="{{musicQueue[0].data[0].preview}}"type="audio/mpeg">
-      </audio>
-    <pre>{{musicQueue[0].data[0] | json}}</pre>
+        </ng-container>
+        </ul>
+
+
+        <!-- <pre>{{musicQueue| json}}</pre> -->
+    </ng-container>
+    
+
+
+    
 </div>

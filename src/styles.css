@@ -6,3 +6,18 @@
     border-radius: 5px; 
     margin-bottom: 10px;
 }
+.button{
+    width: 39px; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    
+
+}
+.audio-player-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjust the gap between the audio player and the button */
+    text-align: center;
+    justify-content: center;
+  }

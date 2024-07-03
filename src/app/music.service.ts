@@ -8,9 +8,11 @@ import { Observable } from 'rxjs';
 })
 export class MusicService {
   private apiUrl ="https://api.deezer.com/search"
-  constructor(private http:HttpClient) { }
-  searchSong(song:string): Observable<Root>{
+  
+  constructor(private http:HttpClient) {}
 
-    return this.http.get<Root>(`${this.apiUrl}?q=${song}`)
+  searchSong(song:string): Observable<Root>{
+    const url = `${this.apiUrl}?q=${song}`;
+    return this.http.get<Root>(url);
   }
 }
