@@ -12,8 +12,12 @@
             <audio  player controls autoplay src="{{musicQueue[0].data[0].preview}}" (ended) = "playNext()"></audio>
             <button class="button" (click)="playNext()">⏭</button>
         </div>
+
+        <p style="font-size: 24px;">Playing Next:</p>
+        <ng-container *ngIf = " musicQueue.length <= 1">
+            <i style="font-size: 20px;">Theres no music in queue!</i>
+        </ng-container>
         
-        <p style="font-size: 24px;">Playing Next</p>
         <ul *ngFor = "let song of musicQueue; let i = index">
             <ng-container *ngIf = "i>0">
                 <div class="row d-flex flex-row align-items-center">
